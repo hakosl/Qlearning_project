@@ -99,7 +99,7 @@ def main():
     transfer_enviroment = make('standard', num_envs = 1)
     transfer_enviroment = CoinRunVecEnvWrapper(transfer_enviroment)
 
-    t = int(10e6)
+    t = int(5e4)
     with tf.Session():
         model = make_model()
 
