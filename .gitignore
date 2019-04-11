@@ -1,2 +1,3 @@
 baselines/
 coinrun/
+*.pkl
