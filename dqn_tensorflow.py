@@ -36,8 +36,11 @@ def run_deepq(model, env, checkpoint=None, total_timesteps=100000, name=""):
 
     def callback(lcl, _glb):
 
-        statistics['rewards'].append(lcl['episode_rewards'][0])
-        statistics['t'].append(lcl['t'])
+        if 'mean_100ep_reward' in lcl:
+            if lcl['t'] % 100 == 0: 
+                print(lcl['mean_100ep_reward'], lcl['t'])
+            statistics['rewards'].append(lcl['mean_100ep_reward'])
+            statistics['t'].append(lcl['t'])
         
 
     
@@ -99,7 +102,7 @@ def main():
     transfer_enviroment = make('standard', num_envs = 1)
     transfer_enviroment = CoinRunVecEnvWrapper(transfer_enviroment)
 
-    t = int(5e4)
+    t = int(5e3)
     with tf.Session():
         model = make_model()
 
