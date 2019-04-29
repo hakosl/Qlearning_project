@@ -114,8 +114,7 @@ def main():
         print("-----\ntraining transfer model on test enviroment\n-----")
         transfer_statistics = run_deepq(model if model else 'cnn', transfer_enviroment, total_timesteps=t, name="transfer")
         print('mean reward: ', np.mean(np.array(transfer_statistics['rewards'])))
-    #with tf.Session():
-        #with tf.variable_scope("non-transfer-model"):
+        
         model = make_model()
         print("-----\ntraining non-transfer model on test enviroment\n-----")
         transfer_enviroment_base_model_statistics = run_deepq(model if model else 'cnn', transfer_enviroment, total_timesteps=t, name="transfer")
