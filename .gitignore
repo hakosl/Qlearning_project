@@ -1,3 +1,4 @@
 baselines/
-
+.vscode/
+__pycache__/
 *.pkl
